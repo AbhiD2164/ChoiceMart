@@ -1,2 +1,2 @@
 # ChoiceMart
-Project repo for my e-commerce project with price negotiatin feature
+Project repo for my e-commerce project with price negotiation feature
