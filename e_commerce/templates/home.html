@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+
+<div class="col-md-3">
+<div class="card p-3 category-card shadow-sm">
+<h5>Categories</h5>
+<ul class="list-group list-group-flush">
+{% for category in categories %}
+<li class="list-group-item">
+<a href="/products/?category={{category.name}}">
+{{category.name}}
+</a>
+</li>
+{% endfor %}
+</ul>
+</div>
+</div>
+
+<div class="col-md-9">
+
+<h4 class="mb-4">Latest Products</h4>
+
+<div class="row g-4">
+
+{% for product in products %}
+<div class="col-md-4 fade-up">
+
+<div class="card product-card">
+
+<img src="{{product.image.url}}" class="product-img">
+
+<div class="card-body">
+
+<h5>{{product.name}}</h5>
+<p class="price">₹{{product.price}}</p>
+
+<div class="d-flex justify-content-between">
+<a href="/products/{{product.id}}/" class="btn btn-outline-primary btn-sm">View</a>
+<a href="/cart/add/{{product.id}}/" class="btn btn-main btn-sm">Add</a>
+</div>
+
+</div>
+</div>
+</div>
+{% endfor %}
+
+</div>
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="alert alert-success animate__animated">
+<h2>Payment Successful 🎉</h2>
+<p>Your order is placed successfully</p>
+
+<script>
+    setTimeout(function() {
+        window.location.href = "/";
+    }, 3000);
+</script>
+
+{% endblock %}

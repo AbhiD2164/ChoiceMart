@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row align-items-center">
+
+<!-- Previous Arrow -->
+<div class="col-md-1 text-start">
+{% if prev_product %}
+<a href="/products/{{prev_product.id}}/?mode={{mode}}" class="btn btn-light shadow-sm">
+⬅
+</a>
+{% endif %}
+</div>
+
+<!-- Product Image -->
+<div class="col-md-5 text-center">
+
+<div class="card p-3 shadow-sm animate__animated animate__fadeInLeft">
+
+<img src="{{ product.image.url }}" 
+style="max-height:400px; object-fit:contain;">
+
+</div>
+
+</div>
+
+<!-- Product Details -->
+<div class="col-md-5">
+
+<div class="card p-4 shadow-sm animate__animated animate__fadeInRight">
+
+<h2>{{product.name}}</h2>
+
+<p class="text-muted">
+{{product.description}}
+</p>
+
+<hr>
+
+{% if product.product_type == "discount" %}
+
+<h4>
+MRP: <del class="text-danger">₹{{product.price}}</del>
+</h4>
+
+<h3 class="text-success">
+Discount Price: ₹{{product.discounted_price}}
+</h3>
+
+{% else %}
+
+<h3 class="text-primary">
+Price: ₹{{product.price}}
+</h3>
+
+{% endif %}
+
+<br>
+
+<a href="/cart/add/{{product.id}}/" class="btn btn-main btn-lg">
+Add to Cart
+</a>
+
+<a href="/" class="btn btn-outline-secondary btn-lg ms-2">
+Back
+</a>
+
+</div>
+
+</div>
+
+<!-- Next Arrow -->
+<div class="col-md-1 text-end">
+{% if next_product %}
+<a href="/products/{{next_product.id}}/?mode={{mode}}" class="btn btn-light shadow-sm">
+➡
+</a>
+{% endif %}
+</div>
+
+</div>
+
+{% endblock %}
