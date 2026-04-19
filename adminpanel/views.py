@@ -40,7 +40,7 @@ def admin_dashboard(request):
 
 def admin_logout(request):
     logout(request)
-    return redirect('/')   # ✅ FIXED
+    return redirect('')   # ✅ FIXED
 
 @admin_required
 def product_list(request):
@@ -58,7 +58,8 @@ def add_product(request):
         Product.objects.create(
             name=request.POST.get("name"),
             price=request.POST.get("price"),
-            category_id=request.POST.get("category")  # important
+            category_id=request.POST.get("category"), # important
+            image=request.FILES.get("image")
         )
         return redirect("admin_product_list")
 
@@ -78,6 +79,7 @@ def edit_product(request, pk):
         product.name = request.POST.get("name")
         product.price = request.POST.get("price")
         product.category_id = request.POST.get("category")  # important
+        image=request.FILES.get("image")
         product.save()
 
         return redirect("admin_product_list")

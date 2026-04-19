@@ -3,7 +3,6 @@ import random
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
-from networkx import random_clustered_graph
 from .forms import RegisterForm, LoginForm
 from .models import Wallet
 
@@ -55,4 +54,4 @@ def login_view(request):
 # LOGOUT
 def logout_view(request):
     logout(request)
-    return redirect("/")
+    return redirect("")
